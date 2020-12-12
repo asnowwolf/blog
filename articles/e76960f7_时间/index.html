@@ -106,7 +106,7 @@
 <p>所以，如果我们要设计一个查询今天数据的 API，那么就不能把一个日期传给应用服务器，因为客户端和服务端的时区可能不同，服务端就无法准确理解客户端的意图。我们应该传给它两个参数：本时区今天的起始时刻和结束时刻。</p>
 <h3 id="使用闭-开区间表示时间段">使用“闭-开”区间表示时间段<a href="http://localhost:4000/articles/e76960f7_%E6%97%B6%E9%97%B4#%E4%BD%BF%E7%94%A8%E9%97%AD-%E5%BC%80%E5%8C%BA%E9%97%B4%E8%A1%A8%E7%A4%BA%E6%97%B6%E9%97%B4%E6%AE%B5" title="点击链接到此标题" class="header-link" aria-hidden="true"><i class="material-icons">link</i></a></h3>
 <p>当我们用时间段来表示日期的时候，需要注意区间的右侧应该是开区间，也就是说，查询要今天的数据就要查询今天午夜零点到明天午夜零点之间的数据，但不包含明天午夜的零点。否则即使我们用 <code>11:59:59.999</code> 来查询，仍然可能存在一条今天的数据出现在这个时间点之后。</p>
-<p>用 SQL 在查数据库时有一个坑：BETWEEN 是个闭区间，也就是说其结束时间是包含在统计范围内的。所以，我们应该用 <code>今晚零点 &gt;= 时间 AND 时间 &lt; 明晚零点</code> 才能准确查出今天的数据。</p>
+<p>在用 SQL 查数据库时有一个坑：BETWEEN 是个闭区间，也就是说其结束时间是包含在统计范围内的。所以，我们应该用 <code>今晚零点 &gt;= 时间 AND 时间 &lt; 明晚零点</code> 才能准确查出今天的数据。</p>
 <h3 id="强制指定时区">强制指定时区<a href="http://localhost:4000/articles/e76960f7_%E6%97%B6%E9%97%B4#%E5%BC%BA%E5%88%B6%E6%8C%87%E5%AE%9A%E6%97%B6%E5%8C%BA" title="点击链接到此标题" class="header-link" aria-hidden="true"><i class="material-icons">link</i></a></h3>
 <p>有时候，用户期望使用的时区并不是自己所在的时区，比如当用户到其它时区出差时，可能关心的仍然是自己原来的时区。除了让用户强制修改客户端的时区之外，还可以允许当前用户指定一个时区，在应用服务器上用这个时区进行换算。不过，这种情况下客户端需要对日期选择器进行特殊处理，以便让用户感知的日期与实际使用的日期保持一致。</p>
 <h3 id="指定数据库会话的时区">指定数据库会话的时区<a href="http://localhost:4000/articles/e76960f7_%E6%97%B6%E9%97%B4#%E6%8C%87%E5%AE%9A%E6%95%B0%E6%8D%AE%E5%BA%93%E4%BC%9A%E8%AF%9D%E7%9A%84%E6%97%B6%E5%8C%BA" title="点击链接到此标题" class="header-link" aria-hidden="true"><i class="material-icons">link</i></a></h3>
@@ -128,6 +128,6 @@
 
   gtag('config', 'UA-159351998-1');
 </script>
-<script src="runtime.7d7e9038a1cdbceb3d53.js" defer=""></script><script src="polyfills.17927244574f64491ae7.js" defer=""></script><script src="main.94b5dc4d389a03dcfe2d.js" defer=""></script>
+<script src="runtime.7d7e9038a1cdbceb3d53.js" defer=""></script><script src="polyfills.17927244574f64491ae7.js" defer=""></script><script src="main.4b55d1ad69c820329888.js" defer=""></script>
 
 </body></html>
